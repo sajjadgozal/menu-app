@@ -15,7 +15,9 @@ return new class extends Migration
     {
         Schema::create('menus', function (Blueprint $table) {
             $table->id();
+            $table->uuid('uuid')->unique();
             $table->string('name')->nullable();
+            $table->string('description')->nullable();
             $table->unsignedBigInteger('place_id');
             $table->foreign('place_id')->references('id')->on('places');
 

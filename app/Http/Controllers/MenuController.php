@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Item;
 use App\Models\Menu;
+use App\Models\Place;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -10,11 +12,15 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\JsonResponse
      */
-    public function index()
+    public function index($menu_uuid)
     {
-        //
+
+        $menu = Menu::where('uuid', $menu_uuid)->with('items.category')->first();
+
+        return response()->json($menu);
+
     }
 
     /**
@@ -46,7 +52,7 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        //
+
     }
 
     /**

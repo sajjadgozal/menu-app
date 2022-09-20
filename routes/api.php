@@ -22,14 +22,9 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/api/v1/menu', 'UserController@index');
-
-
 Route::group(['prefix' => 'v1'], function () {
-    Route::get('menu', 'UserController@index');
-    Route::get('menu/{id}', 'UserController@show');
-    Route::post('menu', 'UserController@store');
-    Route::put('menu/{id}', 'UserController@update');
-    Route::delete('menu/{id}', 'UserController@destroy');
+    Route::get('/menu/{menu}', 'App\Http\Controllers\MenuController@index');
+
+
 });
 
