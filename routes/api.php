@@ -24,7 +24,5 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::get('/menu/{menu}', 'App\Http\Controllers\MenuController@index');
-
-
 });
 
