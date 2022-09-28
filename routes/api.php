@@ -24,5 +24,15 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'v1'], function () {
     Route::get('/menu/{menu}', 'App\Http\Controllers\MenuController@index');
+
+    Route::group(['prefix' => 'item'], function () {
+        Route::get('/', 'App\Http\Controllers\ItemController@index');
+        Route::post('/', 'App\Http\Controllers\ItemController@create');
+        Route::put('/{item}', 'App\Http\Controllers\ItemController@update');
+        Route::delete('/{item}', 'App\Http\Controllers\ItemController@destroy');
+    });
 });
+
+
+
 
